@@ -11,9 +11,9 @@
 - [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
 
 ## Telepítés és futtatás
-1. Klónozd a repót:
+Klónozd a repót:
 ```bash
 git clone https://github.com/and683/ASP.NET-Backend-probafeladat.git
 cd user-manager-backend
 dotnet restore
-dotnet run
+dotnet run ```

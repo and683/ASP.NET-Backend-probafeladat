@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using user_manager_backend.models;
 using user_manager_backend.repo;
 
@@ -7,21 +5,26 @@ namespace user_manager_backend.Services
 {
     public class UserService : IUserService
     {
-        private readonly UserRepository _repository;
+        private readonly IUserRepo _userRepo;
 
-        public UserService(UserRepository repository)
+        public UserService(IUserRepo userRepo)
         {
-            _repository = repository;
+            _userRepo = userRepo;
         }
 
-        public async Task<List<Felhasznalo>> GetAllUsersAsync()
+        public async Task<Felhasznalo?> GetByIdAsync(int id)
         {
-            return await _repository.GetAllAsync();
+            return await _userRepo.GetByIdAsync(id);
+        }
+
+        public async Task<List<Felhasznalo>> GetAllUsersAsync(string? nev = null)
+        {
+            return await _userRepo.GetAllAsync(nev);
         }
 
         public async Task CreateUserAsync(Felhasznalo user)
         {
-            await _repository.AddAsync(user);
+            await _userRepo.AddAsync(user);
         }
     }
 }

@@ -1,18 +1,27 @@
-public class UserService : IUserService
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using user_manager_backend.models;
+using user_manager_backend.repo;
+
+namespace user_manager_backend.Services
 {
-    private readonly IUserRepo _repo;
-
-    public UserService(IUserRepo repo)
+    public class UserService : IUserService
     {
-        _repo = repo;
-    }
+        private readonly UserRepository _repository;
 
-    public Task<felhasznalo?> GetUserAsync(int Id) => _repo.GetByIdAsync(Id);
-    public Task<List<felhasznalo>> GetUsersAsync(string? Nev) => _repo.GetAllAsync(Nev);
+        public UserService(UserRepository repository)
+        {
+            _repository = repository;
+        }
 
-    public async Task<felhasznalo> CreateUserAsync(felhasznalo felhasznalo)
-    {
-        await _repo.AddAsync(felhasznalo);
-        return felhasznalo;
+        public async Task<List<Felhasznalo>> GetAllUsersAsync()
+        {
+            return await _repository.GetAllAsync();
+        }
+
+        public async Task CreateUserAsync(Felhasznalo user)
+        {
+            await _repository.AddAsync(user);
+        }
     }
 }

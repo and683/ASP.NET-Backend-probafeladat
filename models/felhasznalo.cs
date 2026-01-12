@@ -1,7 +1,9 @@
-public class felhasznalo
+namespace user_manager_backend.models
 {
-    public int Id { get; set; }
-    public string Nev { get; set; } = null!;
-    public int Kor { get; set; }
-    public string Nem { get; set; } = null!;
+    public class Felhasznalo
+    {
+        public int Id { get; set; }
+        public string Nev { get; set; } = string.Empty;
+        public string Email { get; set; } = string.Empty;
+    }
 }

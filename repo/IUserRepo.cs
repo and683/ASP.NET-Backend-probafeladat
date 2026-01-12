@@ -1,6 +1,13 @@
-public interface IUserRepo
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using user_manager_backend.models; 
+
+namespace user_manager_backend.repo
 {
-    Task<felhasznalo?> GetByIdAsync(int Id);
-    Task<List<felhasznalo>> GetAllAsync(string? Nev);
-    Task AddAsync(felhasznalo felhasznalo);
+    public interface IUserRepo
+    {
+        Task<Felhasznalo?> GetByIdAsync(int Id);
+        Task<List<Felhasznalo>> GetAllAsync(string? Nev);
+        Task AddAsync(Felhasznalo user);
+    }
 }

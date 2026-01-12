@@ -1,26 +1,29 @@
-public class UserRepo : IUserRepo
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using user_manager_backend.Data;
+using user_manager_backend.models;
+
+namespace user_manager_backend.repo
 {
-    private readonly AppDbContext _context;
-
-    public UserRepo(AppDbContext context)
+    public class UserRepository
     {
-        _context = context;
-    }
+        private readonly AppDbContext _context;
 
-    public async Task<felhasznalo?> GetByIdAsync(int Id) =>
-        await _context.felhasznalo.FindAsync(Id);
+        public UserRepository(AppDbContext context)
+        {
+            _context = context;
+        }
 
-    public async Task<List<felhasznalo>> GetAllAsync(string? Nev)
-    {
-        var query = _context.Users.AsQueryable();
-        if (!string.IsNullOrEmpty(Nev))
-            query = query.Where(u => u.Nev.Contains(Nev));
-        return await query.ToListAsync();
-    }
+        public async Task<List<Felhasznalo>> GetAllAsync()
+        {
+            return await _context.Felhasznalok.ToListAsync();
+        }
 
-    public async Task AddAsync(felhasznalo felhasznalo)
-    {
-        _context.felhasznalo.Add(felhasznalo);
-        await _context.SaveChangesAsync();
+        public async Task AddAsync(Felhasznalo user)
+        {
+            _context.Felhasznalok.Add(user);
+            await _context.SaveChangesAsync();
+        }
     }
 }

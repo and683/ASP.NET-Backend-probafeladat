@@ -1,6 +1,12 @@
-public interface IUserService
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using user_manager_backend.models;
+
+namespace user_manager_backend.Services
 {
-    Task<felhasznalo?> GetUserAsync(int Id);
-    Task<List<felhasznalo>> GetUsersAsync(string? Nev);
-    Task<felhasznalo> CreateUserAsync(Nev Nev);
+    public interface IUserService
+    {
+        Task<List<Felhasznalo>> GetAllUsersAsync();
+        Task CreateUserAsync(Felhasznalo user);
+    }
 }

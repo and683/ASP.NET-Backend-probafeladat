@@ -1,7 +1,12 @@
-public class AppDbContext : DbContext
-{
-    public DbSet<felhasznalo> felhasznalo => Set<felhasznalo>();
+using Microsoft.EntityFrameworkCore;
+using user_manager_backend.models;
 
-    public AppDbContext(DbContextOptions<AppDbContext> options)
-        : base(options) { }
+namespace user_manager_backend.Data
+{
+    public class AppDbContext : DbContext
+    {
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
+
+        public DbSet<Felhasznalo> Felhasznalok { get; set; }
+    }
 }

@@ -1,17 +1,19 @@
 ## Funkciók
+- Felhasználók listázása (GET `/api/felhasznalo`)
+- Felhasználó lekérése ID alapján (GET `/api/felhasznalo/{id}`)
+- Felhasználó létrehozása (POST `/api/felhasznalo`)
+- Service és repository réteg kialakítása
+- In-Memory vagy SQLite adatbázis használata (InMemory alapértelmezett)
+- Dependency Injection alkalmazása
+- Swagger dokumentáció elérhető
 
-- Felhasználók lekérése ID alapján (GET `/api/user/{id}`)
-- Felhasználók listázása, opcionális név szerinti szűréssel (GET `/api/user?name=Anna`)
-- Új felhasználó létrehozása (POST `/api/user`)
-- Service és repository réteg használata
-- Dependency Injection
-- Swagger dokumentáció
-- Git verziókövetés
+## Követelmények
+- [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
 
-## Telepítés
-
-1. Klónozd a GitHub repo-t:
-
+## Telepítés és futtatás
+1. Klónozd a repót:
 ```bash
-git clone https://github.com/and683/ASP.NET-Backend-probafeladat.git
+git clone <repo-url>
 cd user-manager-backend
+dotnet restore
+dotnet run

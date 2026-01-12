@@ -16,4 +16,5 @@ Klónozd a repót:
 git clone https://github.com/and683/ASP.NET-Backend-probafeladat.git
 cd user-manager-backend
 dotnet restore
-dotnet run ```
+dotnet run 
+```
